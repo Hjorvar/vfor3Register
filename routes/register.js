@@ -15,16 +15,6 @@ router.get('/', (req, res) => {
   res.render('register', { title });
 });
 
-
-
-
-
-
-
-
-
-
-
 router.post('/', (req, res) => {
   const passwordHash = bcrypt.hashSync(req.body.password, 10);
   createUsers(dbFile, req.body.email, req.body.username, req.body.firstName, req.body.lastName, passwordHash, req.body.birthdate)
