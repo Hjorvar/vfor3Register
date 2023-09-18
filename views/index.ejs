@@ -4,17 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
   <a href="/login">Login</a>
   <a href="/register">Register</a>
-  <ul>
-    <% for (let i = 0; i < users.length; i++) { %>
-      <li><%= users[i].username %> - 
-        <form action="/delete" method="post"><button id="button" 
-          name="idUser" value="<%= users[i].id %>">Delete</button></form>
-      </li>
-    <% } %>
-  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for (let i = 0; i < users.length; i++) { %>
+          <tr>
+            <td><%= users[i].username %></td>
+            <td><%= users[i].email %></td> 
+            <td><%= users[i].password %></td> 
+            <td>
+              <form action="/delete" method="post"><button id="button" 
+                name="idUser" value="<%= users[i].id %>">Delete</button></form>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+  </table>
+
 </body>
 </html>
