@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 import { router as frontRouter } from './routes/index.js';
 import { router as loginRouter } from './routes/login.js';
 import { router as registerRouter } from './routes/register.js';
+import { router as deleteRouter } from './routes/delete.js';
 
 const app = express();
 dotenv.config();
@@ -36,6 +37,7 @@ app.use(session({
 app.use('/', frontRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/delete', deleteRouter);
 
 // errors: page not found
 app.use((req, res, next) => {

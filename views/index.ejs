@@ -10,7 +10,10 @@
   <a href="/register">Register</a>
   <ul>
     <% for (let i = 0; i < users.length; i++) { %>
-      <li><%= users[i].username %></li>
+      <li><%= users[i].username %> - 
+        <form action="/delete" method="post"><button id="button" 
+          name="idUser" value="<%= users[i].id %>">Delete</button></form>
+      </li>
     <% } %>
   </ul>
 </body>
