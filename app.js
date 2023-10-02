@@ -8,6 +8,7 @@ import { router as frontRouter } from './routes/index.js';
 import { router as loginRouter } from './routes/login.js';
 import { router as registerRouter } from './routes/register.js';
 import { router as deleteRouter } from './routes/delete.js';
+import { router as updateRouter } from './routes/update.js';
 
 const app = express();
 dotenv.config();
@@ -38,6 +39,7 @@ app.use('/', frontRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/delete', deleteRouter);
+app.use('/update', updateRouter);
 
 // errors: page not found
 app.use((req, res, next) => {

@@ -7,9 +7,12 @@
   <link rel="stylesheet" href="css/table.css">
 </head>
 <body>
-  <a href="/login">Login</a>
-  <a href="/register">Register</a>
-
+  <% if(isLoggedIn){ %>
+    <h3><%= user %></h3>
+  <% } else { %>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  <% } %>
   <table>
     <thead>
       <tr>
@@ -17,6 +20,7 @@
         <th>Email</th>
         <th>Password</th>
         <th>Delete</th>
+        <th>Update</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +32,10 @@
             <td>
               <form action="/delete" method="post"><button id="button" 
                 name="idUser" value="<%= users[i].id %>">Delete</button></form>
+            </td>
+            <td>
+              <form action="/update" method="get"><button id="button" 
+                name="email" value="<%= users[i].email %>">Update</button></form>
             </td>
         </tr>
         <% } %>

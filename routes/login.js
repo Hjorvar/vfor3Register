@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { readUser } from '../db/select/user.js';
+import { readUser } from '../db/read/user.js';
 
 const dbFile = path.join(fileURLToPath(new URL('.', import.meta.url)), '../db/users.db');
 
@@ -21,8 +21,8 @@ router.post('/', (req, res) => {
   if (user) {
     const passwordMatch = bcrypt.compareSync(req.body.password, user.password);
     if (passwordMatch) {
-      req.session.user = user;
-      console.log(req.session.user);
+      req.session.user = user.username;
+      req.session.isLoggedIn = true;
       res.redirect('/');
       return;
     }
