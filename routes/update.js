@@ -1,11 +1,8 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createUsers } from '../db/create/user.js';
 import { readUser } from '../db/read/user.js';
 import { updateUser } from '../db/update/user.js';
-
 
 const dbFile = path.join(fileURLToPath(new URL('.', import.meta.url)), '../db/users.db');
 
@@ -24,7 +21,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   if (!req.body.password) {
-    updateUser(dbFile, req.body.idUser, req.body.firstName, req.body.lastName, req.body.birthDate, req.body.email, req.body.username);
+    updateUser(dbFile,  req.body.idUser,
+                        req.body.firstName, 
+                        req.body.lastName, 
+                        req.body.birthDate, 
+                        req.body.email, 
+                        req.body.username
+              );
   }
   res.redirect('/');
 });
