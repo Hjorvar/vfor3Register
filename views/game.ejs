@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/register.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Create game</h1>
+  <form action="/game" method="POST" >
+    <label for="name">Game name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="description">Game description:</label>
+    <input type="text" id="description" name="description">
+    <br>
+    <select name="characters" id="characters" multiple>
+    <% for (let i = 0; i < characters.length; i++) { %>
+      <option value="<%= characters[i].id %>"><%= characters[i].name %></option>
+    <% } %>
+    </select>
+    <br>
+    <button type="submit">Create game</button>
+  </form>
+</body>
+</html>
