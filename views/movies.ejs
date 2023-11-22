@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>User cart: <%= cartCount.count  %></h1>
+  <% for (let movie of movies) { %>
+    <h1><%= movie.name %></h1>
+    <p><%= movie.description %></p>
+    <p><%= movie.price %></p>
+    <p><%= movie.image %></p>
+    <br>
+    <form action="/movies" method="post">
+      <input type="hidden" name="movie" value="<%= movie.id %>">
+      <input type="submit" value="AddToCart">
+    </form>
+    <br>
+    <form action="/deleteFromCart" method="post">
+      <input type="hidden" name="movie" value="<%= movie.id %>">
+      <input type="submit" value="DeleteFromCart">
+    </form>
+  <% } %>
+</body>
+</html>

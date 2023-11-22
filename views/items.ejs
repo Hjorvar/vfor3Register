@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title  %></title>
+</head>
+<body>
+  <% for (let key in movies) {
+    const movie = movies[key];
+  %>
+    <h3><%= movie.title %></h3>
+    <img src="images/<%= movie.image %>" alt="">
+    <p><%= movie.price %></p>
+    <form action="/images" method="post">
+      <input type="hidden" name="movie" value="<%= movie.id %>">
+      <input type="button" value="Add to cart">  
+    </form>
+
+  }  %>
+</body>
+</html>

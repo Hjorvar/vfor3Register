@@ -10,6 +10,9 @@ import { router as registerRouter } from './routes/register.js';
 import { router as deleteRouter } from './routes/delete.js';
 import { router as updateRouter } from './routes/update.js';
 import { router as gameRouter } from './routes/game.js';
+import { router as itemsRouter } from './routes/items.js';
+import { router as moviesRouter } from './routes/movies.js';
+import { router as deleteCartRouter } from './routes/deleteFromCart.js';
 
 const app = express();
 dotenv.config();
@@ -42,6 +45,9 @@ app.use('/register', registerRouter);
 app.use('/delete', deleteRouter);
 app.use('/update', updateRouter);
 app.use('/game', gameRouter);
+app.use('/items', itemsRouter);
+app.use('/movies', moviesRouter);
+app.use('/deleteFromCart', deleteCartRouter);
 
 // errors: page not found
 app.use((req, res, next) => {
